@@ -1,8 +1,7 @@
 name: 'Json Schema Action: Compression'
 description: 'Compresses the given json schema into compressed versions'
 branding:
-  icon: activity
-  color: blue
+
 inputs:
   specificationFile:
     description: The filepath to the specification file
