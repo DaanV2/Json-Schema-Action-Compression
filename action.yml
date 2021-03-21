@@ -1,0 +1,14 @@
+name: 'Json Schema Action: Compression'
+description: 'Compresses the given json schema into compressed versions'
+branding:
+  icon: activity
+  color: blue
+inputs:
+  specificationFile:
+    description: The filepath to the specification file
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: Start-Process -NoNewWindow -Wait -FilePath "${{ github.action_path }}/Program/Windows/JsonSchemaValidationCompressor.Console.Net.exe" -ArgumentList "${{ inputs.specificationFile }}"
+      shell: powershell
