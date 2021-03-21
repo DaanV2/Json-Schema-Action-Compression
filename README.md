@@ -16,6 +16,10 @@ Uses the [JsonSchemaValidationCompressor.Net](https://github.com/DaanV2/JsonSche
 }
 ```
 
+## Inputs
+
+**specificationFile**:
+The filepath to the specification file.
 
 ## Example usage
 
