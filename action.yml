@@ -11,5 +11,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: Start-Process -NoNewWindow -Wait -FilePath "${{ github.action_path }}/Program/Windows/JsonSchemaValidationCompressor.Console.Net.exe" -ArgumentList "${{ inputs.specificationFile }}"; exit %ErrorLevel%
+    - name: compress
+      run: |
+        $process = -NoNewWindow -Wait -FilePath "${{ github.action_path }}/Program/Windows/JsonSchemaValidationCompressor.Console.Net.exe" -ArgumentList "${{ inputs.specificationFile }}"
+        exit $process.ExitCode
       shell: powershell
