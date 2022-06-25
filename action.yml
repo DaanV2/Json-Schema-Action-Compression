@@ -1,5 +1,6 @@
 name: 'Json Schema Action: Compression'
 description: 'Compresses the given json schema into compressed versions'
+author: DaanV2
 branding:
   icon: box
   color: purple
@@ -12,7 +13,6 @@ runs:
   using: 'composite'
   steps:
     - name: compress
+      shell: bash
       run: |
-        $process = Start-Process -NoNewWindow -Wait -FilePath "${{ github.action_path }}/Program/Windows/JsonSchemaValidationCompressor.Console.Net.exe" -ArgumentList "${{ inputs.specificationFile }}"
-        exit $process.ExitCode
-      shell: powershell
+        ${{ github.action_path }}/source/jscv "${{ inputs.specificationFile }}"
