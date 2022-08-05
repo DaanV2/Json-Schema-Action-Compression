@@ -16,4 +16,4 @@ runs:
       shell: shell
       working-directory: ${{ github.action_path }}
       run: |
-        ./jscv "${{ inputs.specificationFile }}"
+        jscv "${{ inputs.specificationFile }}"
