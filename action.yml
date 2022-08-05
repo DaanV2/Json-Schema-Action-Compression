@@ -14,5 +14,7 @@ runs:
   steps:
     - name: compress
       shell: bash
+      working-directory: ${{ github.action_path }}
       run: |
-        ${{ github.action_path }}/source/jscv "${{ inputs.specificationFile }}"
+        ls
+        ./source/jscv "${{ inputs.specificationFile }}"
