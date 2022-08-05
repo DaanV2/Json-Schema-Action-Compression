@@ -53,7 +53,7 @@ jobs:
       # Runs a single command using the runners shell
       - uses: DaanV2/Json-Schema-Action-Compression@v2.0
         with:
-          specificationFile: "${{github.workspace}}\\source\\compress_specification.json"
+          specificationFile: "${{github.workspace}}/source/compress_specification.json"
 
       - name: Commit changes
         continue-on-error: true
