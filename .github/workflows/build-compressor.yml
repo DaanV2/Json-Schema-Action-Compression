@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Compressor
         uses: actions/checkout@v3
         with:
-          repository: https://github.com/DaanV2/JsonSchemaValidationCompressor.Net
+          repository: DaanV2/JsonSchemaValidationCompressor.Net
           path: /home/jsvc-source/
         
       - name: Setup Dotnet
