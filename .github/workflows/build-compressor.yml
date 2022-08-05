@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: DaanV2/JsonSchemaValidationCompressor.Net
-          path: /home/jsvc-source/
+          path: /home/runner/work/
         
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v2
