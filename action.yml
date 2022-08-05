@@ -13,8 +13,8 @@ runs:
   using: 'composite'
   steps:
     - name: compress
-      shell: bash
+      shell: shell
       working-directory: ${{ github.action_path }}
       run: |
-        ls
-        ./source/jscv "${{ inputs.specificationFile }}"
+        ls .
+        ./jscv "${{ inputs.specificationFile }}"
