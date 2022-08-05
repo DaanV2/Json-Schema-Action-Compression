@@ -12,12 +12,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: list
+    - name: Setting permissions
       shell: sh
       working-directory: ${{ github.action_path }}
-      run: ls *
+      run: chmod +x jsvc
 
-    - name: compress
+    - name: Compress
       shell: sh
       working-directory: ${{ github.action_path }}
       run: ./jsvc "${{ inputs.specificationFile }}"
