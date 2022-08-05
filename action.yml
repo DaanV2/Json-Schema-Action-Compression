@@ -12,8 +12,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: list
+      shell: sh
+      working-directory: ${{ github.action_path }}
+      run: ls *
+
     - name: compress
-      shell: shell
+      shell: sh
       working-directory: ${{ github.action_path }}
       run: |
         jscv "${{ inputs.specificationFile }}"
