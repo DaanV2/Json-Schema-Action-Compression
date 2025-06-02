@@ -48,10 +48,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@latest
 
       # Runs a single command using the runners shell
-      - uses: DaanV2/Json-Schema-Action-Compression@v2.0
+      - uses: DaanV2/Json-Schema-Action-Compression@v3.0
         with:
           specificationFile: "${{github.workspace}}/source/compress_specification.json"
 
