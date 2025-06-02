@@ -9,15 +9,9 @@ inputs:
   specificationFile:
     description: The filepath to the specification file
     required: true
-runs:
-  using: 'composite'
-  steps:
-    - name: Setting permissions
-      shell: sh
-      working-directory: ${{ github.action_path }}
-      run: chmod +x jsvc
 
-    - name: Compress
-      shell: sh
-      working-directory: ${{ github.action_path }}
-      run: ./jsvc "${{ inputs.specificationFile }}"
+runs:
+  using: 'docker'
+  image: 'ghcr.io/daanv2/jsonschemavalidationcompressor.net:v1.0.6'
+  args:
+    - ${{ inputs.specificationFile }}
