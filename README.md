@@ -1,6 +1,6 @@
 # Json-Schema-Action-Compression
 
-Uses the [JsonSchemaValidationCompressor.Net](https://github.com/DaanV2/JsonSchemaValidationCompressor.Net) program to condense json validation schemas. this Must be run on windows
+Uses the [JsonSchemaValidationCompressor.Net](https://github.com/DaanV2/JsonSchemaValidationCompressor.Net) program to condense JSON validation schemas. This action runs in a Docker container and works on all GitHub Actions runners.
 
 ## Compression File format
 
@@ -19,49 +19,44 @@ Uses the [JsonSchemaValidationCompressor.Net](https://github.com/DaanV2/JsonSche
 ## Inputs
 
 **specificationFile**:
-The filepath to the specification file.
+The filepath to the specification file. This should be a relative path from the root of your repository (e.g., `source/compress_specification.json`).
 
 ## Example usage
 
 ```yml
-# This is a basic workflow to help you get started with Actions
-
-name: Compressing json schemas
-
-# Controls when the action will run. 
+name: 🖥️ Compress Json Schemas
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
+    paths:
+      - "**/*.json"
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: linux-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    runs-on: ubuntu-latest
+    name: 🖥️ Compress Schemas
     steps:
-      - uses: actions/checkout@latest
+      - name: 📦 Checkout Repository
+        uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - uses: DaanV2/Json-Schema-Action-Compression@v3.2
+      - name: 💾 Compress Json
+        uses: DaanV2/Json-Schema-Action-Compression@v3.3
         with:
-          specificationFile: "${{github.workspace}}/source/compress_specification.json"
+          specificationFile: "source/compress_specification.json"
 
-      - name: Commit changes
+      - name: ✏️ Commit changes
         continue-on-error: true
         run: |
           cd ${{github.workspace}}
           git config --global user.email "Bot@Example.com"
           git config --global user.name "Example Bot"
           git add .
-          git commit -m "auto: Generated typescript includes"
+          git commit -m "auto: generated json schemas"
           git push
 ```
+
+**Note:**
+- The `specificationFile` input should be a relative path (e.g., `source/compress_specification.json`).
+- The action runs in Docker, and your repository is mounted at `/github/workspace` inside the container. Relative paths are resolved from the root of your repository.
