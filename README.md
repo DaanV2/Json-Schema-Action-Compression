@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@latest
 
       # Runs a single command using the runners shell
-      - uses: DaanV2/Json-Schema-Action-Compression@v3.0
+      - uses: DaanV2/Json-Schema-Action-Compression@v3.2
         with:
           specificationFile: "${{github.workspace}}/source/compress_specification.json"
 
